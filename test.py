@@ -1,7 +1,13 @@
-res = [5, 15, 25, 35, 45, 55, 65, 75, 85, 95]
+cnt=0
 
-for i in range(len(res)):
-    if i%2==1:
-        res.pop()
+def f(x):
+    if x<1: return
+    print(x, "*")
+    f(x//2)
+    print(x%2, end='')
 
-print(res)
+
+f(10)
+print()
+f(13)
+# print(cnt)
