@@ -1,20 +1,18 @@
 from sys import stdin
 
 n = int(stdin.readline().strip())
-num = stdin.readline()
+num = stdin.readline().strip()
 
 stack = []
-for i in num[::-1]:
-    stack.append(i)
+for i in range(len(num)):
+    stack.append(num[len(num)-i-1])
+    if i % 3 == 2 and i != len(num) - 1:
+        stack.append(',')
 
-s = ''
 
-if len(stack) > 3:
-    for i in range(len(stack)):
-        if i % 3 == 2:
-            s += ','
-        s += str(stack.pop())
-else:
-    print(num)
+length = len(stack)
+for i in range(length):
+    print(stack.pop(), end='')
 
-print(s)
+
+
