@@ -11,29 +11,21 @@ int N; //입력받을 횟수 N
 int cnt = 0; //s 배열 요소 개수 n
 
 void I(int code, char name[10]) {
-    for(int i=0; i<cnt; i++) {
-        if(s[i].code == code) {
-            cnt++;
-            for(int j=i; j<cnt-1; j++)
-                s[j+1]=s[j];
-            s[i].code = code;
-            strcpy(s[i].name, name);
+    for(int i=0; i<cnt; i++)
+        if(s[i].code == code) //겹치면
             return;
-        }
-    }
     s[cnt].code = code;
     strcpy(s[cnt].name, name);
     cnt++;
-    return;
 }
 
 void D(int code) {
     for(int i=0; i<cnt; i++){
         if (s[i].code == code){
-                for(int j=i; j<cnt-1; j++)
-                    s[j]=s[j+1];
-                cnt--;
-                return;
+            for(int j=i; j<cnt-1; j++)
+                s[j]=s[j+1];
+            cnt--;
+            return;
         }
     }
     return;
@@ -50,22 +42,14 @@ int main(void) {
         scanf(" %c %d %s", &c, &code, name);
 		if(c == 'I')
             I(code, name);
-		else if(c == 'D'){
+		else if(c == 'D')
             D(code);
-            for(int j=0 ; j<cnt ; j++){
-                printf("%d %s\n", s[j].code, s[j].name);
-            }
-            printf("===================\n");
-        }
-            
 	}
     for(int i=0; i<5; i++) {
         scanf("%d", &l[i]);
     }
 
-    
-
-    /*Stable Sort인 Bubble Sort*/
+    /*Bubble Sort*/
     for(int i=cnt-1; i>0; i--) {
         for(int j=0; j<i; j++) {
             if(s[j].code > s[j+1].code) {
