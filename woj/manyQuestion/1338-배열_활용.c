@@ -10,7 +10,7 @@ int main()
 
     for(int i=0; i<n ; i++){
         for(int j=i ; j<i+n ; j++){
-            if(j<5)
+            if(j<n)
                 printf("%d ", arr[j]);
             else{
                 int temp = j - n;
